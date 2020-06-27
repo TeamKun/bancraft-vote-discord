@@ -52,7 +52,8 @@ class Vote {
             let member = msg.mentions.members.first();
             if (member === undefined) {
                 const members = await msg.guild.members.fetch();
-                member = members.find(e => e.displayName === parsed.arguments[0]);
+                const search = parsed.reader.getRemaining();
+                member = members.find(e => e.displayName === search);
             }
             if (member === undefined) {
                 await msg.reply('メンバーが見つかりません。');
